@@ -1,6 +1,7 @@
 # Label Semantics for Robust Hyperspectral Image Classification
 
-This repository contains code and resources from our IJCNN 2025 paper **"Label Semantics for Robust Hyperspectral Image Classification"**, with detailed implementation for the **Hyperspectral Blueberry** dataset using 3D-CNN and the proposed **S3FN** (Semantics-Supervised Spectral Feature Network) framework.
+This repository contains code and resources from our IJCNN 2025 paper **"Label Semantics for Robust Hyperspectral Image Classification"**, with detailed implementation for the **HyperspectralBlueberries** dataset using the proposed **S3FN** (Semantic Spectral-
+Spatial Fusion Network) framework and baselines.
 
 ---
 
@@ -52,7 +53,7 @@ HyperspectralBlueberries/
 
 ---
 
-## How to Run (Blueberry Dataset)
+## How to Run (HyperspectralBlueberries)
 
 ### Baseline Pipeline
 
@@ -145,8 +146,6 @@ pip install -r requirements.txt
 
 ---
 
----
-
 ## Dataset References
 
 This repository makes use of the following hyperspectral datasets:
@@ -169,7 +168,7 @@ This repository makes use of the following hyperspectral datasets:
 
 ---
 
-###  Fruit Ripeness Dataset (Avocado & Kiwi)
+###  DeepHS-Fruit (Avocado & Kiwi)
 
 * **Title**: *Measuring the Ripeness of Fruit with Hyperspectral Imaging and Deep Learning*  
 * **Authors**: Leon Amadeus Varga, Jan Makowski, Andreas Zell  
@@ -185,10 +184,11 @@ If you find this work useful, please cite our paper:
 
 ```bibtex
 @inproceedings{S3FN,
-  title={Label Semantics for Robust Hyperspectral Image Classification},
-  author={Your Name and Coauthors},
-  booktitle={International Joint Conference on Neural Networks (IJCNN)},
-  year={2025}
+  title     = {Label Semantics for Robust Hyperspectral Image Classification},
+  author    = {Rafin Hassan and Zarin Roshni and Rafiqul Bari and Alimul Islam and Nabeel Mohammed and Moshiur Farazi and Shafin Rahman},
+  booktitle = {Proceedings of the International Joint Conference on Neural Networks (IJCNN)},
+  year      = {2025},
+  institution = {North South University and University of Doha for Science and Technology}
 }
 ```
 
