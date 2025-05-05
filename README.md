@@ -1,99 +1,153 @@
-# S3FN: Semantic Supervision for Spectral Feature Networks in Hyperspectral Image Classification
+# Label Semantics for Robust Hyperspectral Image Classification
 
-This repository contains the code and resources for the paper:
-
-> **Label Semantics for Robust Hyperspectral Image Classification**  
-> Accepted at IJCNN 2025
-
-We introduce **S3FN**, a semantic-aware framework that integrates label descriptions and pretrained 3D-CNN features for robust hyperspectral image (HSI) classification, especially under low-data or imbalanced conditions. This repository provides code for both baseline methods and the full S3FN pipeline.
+This repository contains code and resources from our IJCNN 2025 paper **"Label Semantics for Robust Hyperspectral Image Classification"**, with detailed implementation for the **Hyperspectral Blueberry** dataset using 3D-CNN and the proposed **S3FN** (Semantics-Supervised Spectral Feature Network) framework.
 
 ---
 
 ## Overview
 
-- 📁 `Blueberry/`, `Ripeness/`, `Wood/` – Dataset-specific pipelines.
-- 📁 `General/` – Common utility scripts and architecture diagrams.
-- 📄 `Running_Instructions.txt` – Step-by-step instructions.
-- 📄 `requirements.txt` – Python dependencies.
+We propose a novel architecture (**S3FN**) that leverages label semantics to guide hyperspectral image classification. The pipeline integrates hyperspectral cube processing, dimensionality reduction, 3D-CNN training, and semantic embedding using large language models.
 
 ---
 
-## Architecture
+## Repository Structure (Simplified for Blueberry Dataset)
 
-<img src="./General/S3FN_Architecture.png" alt="S3FN Architecture" width="700"/>
-
----
-
-## Running the Pipeline (Blueberry Dataset)
-
-Below is the full pipeline to reproduce results using the **Blueberry** dataset.
-
----
-
-### 🔹 Baseline Pipeline
-
-1. **Extract Spectral Means**  
-   Navigate to `Blueberry/Dataset_Code/Preprocessing_New` and run:
-   - `Preprocessing_SM.ipynb`
-
-2. **Merge and Split the Data**  
-   Navigate to `Blueberry/Dataset_Code/SM_Combine_RandomCube` and run:
-   - `combined_npy.ipynb`
-   - `Dataset_split.ipynb`
-
-3. **Train Baseline Model**  
-   Navigate to `Blueberry/Baseline` and run:
-   - `Baseline_SM_Blueberry.ipynb`
+```bash
+HyperspectralBlueberries/
+├── 3DCNN.ipynb                   # 3D CNN pretraining
+├── Baseline_SM.ipynb            # Baseline training with spectral means
+├── S3FN.ipynb                   # S3FN training and evaluation
+├── Test_w_voting.ipynb          # Final evaluation with voting
+├── dataset_preprocessing/
+│   ├── Individual_spectral_means.ipynb
+│   ├── merge_SM_npy.ipynb
+│   ├── dataset_split.ipynb
+│   ├── individual_cube_extraction.ipynb
+│   ├── combine_cubes_npy.ipynb
+│   ├── random_cube.ipynb
+│   └── PCA.ipynb
+├── embedding/
+│   ├── GPT_prompt.ipynb
+│   └── label_embeddings_roberta_bert.ipynb
+└── extract_3DCNN_features.ipynb
+```
 
 ---
 
-### 🔹 S3FN Pipeline
+## S3FN Architecture
 
-#### Stage 1: Pretraining with 3D-CNN on PCA-reduced Cubes
-
-1. **Cube Extraction**  
-   In `Blueberry/Dataset_Code/Preprocessing_New`, run:
-   - `Preprocessing_Cubes.ipynb` (extract individual cubes)
-   - `Merge_npy.ipynb` (combine cube `.npy` files)
-
-2. **Random Cube Generation**  
-   In `Blueberry/Dataset_Code/SM_Combine_RandomCube`, run:
-   - `Random_Cube.ipynb` (generates 32×32×C patches)
-
-3. **Dimensionality Reduction via PCA**  
-   Run:
-   - `PCA.ipynb`
-
-4. **Train 3D-CNN**  
-   In `Blueberry/3DCNNs`, run:
-   - `3DCNN.ipynb`
+![S3FN Architecture](docs/assets/s3fn_architecture.png) <sub>*Figure: Overall pipeline for S3FN. Stage 1: Feature extraction; Stage 2: Semantic fusion and classification.*</sub>
 
 ---
 
-#### Stage 2: Label Embeddings and Multimodal Fusion
+## How to Run (Blueberry Dataset)
 
-1. **Generate Label Descriptions**  
-   In `Blueberry/Embedding_Corpus`, run:
-   - `GPT_Prompt.ipynb`
+### Baseline Pipeline
 
-2. **Compute Label Embeddings**  
-   Run:
-   - `Blueberry_Label_Embeddings_Roberta.ipynb`
+1. **Extract Spectral Means**
 
-3. **Extract 3D-CNN Features**  
-   In `Blueberry/Extract_Features`, run:
-   - `Extract_Features_CNN.ipynb`
+   ```bash
+   Run: dataset_preprocessing/Individual_spectral_means.ipynb
+   ```
 
-4. **Run S3FN Fusion and Testing**  
-   In `Blueberry/Fusion`, run:
-   - `Fusion_Aug_86.36.ipynb` or  
-   - `Random_Inference.ipynb`
+2. **Combine & Split Data**
+
+   ```bash
+   Run: dataset_preprocessing/merge_SM_npy.ipynb
+   Run: dataset_preprocessing/dataset_split.ipynb
+   ```
+
+3. **Train Baseline Model**
+
+   ```bash
+   Run: Baseline_SM.ipynb
+   ```
 
 ---
 
-## Environment Setup
+### S3FN Pipeline
 
-Install dependencies with:
+#### Stage 1: Cube Preprocessing, PCA & 3D CNN Training
+
+1. **Extract Individual Cubes**
+
+   ```bash
+   Run: dataset_preprocessing/individual_cube_extraction.ipynb
+   ```
+
+2. **Combine Cubes & Generate 32×32×C Random Cubes**
+
+   ```bash
+   Run: dataset_preprocessing/combine_cubes_npy.ipynb  
+   Run: dataset_preprocessing/random_cube.ipynb
+   ```
+
+3. **Dimensionality Reduction**
+
+   ```bash
+   Run: dataset_preprocessing/PCA.ipynb
+   ```
+
+4. **Pretrain 3D CNN**
+
+   ```bash
+   Run: 3DCNN.ipynb
+   ```
+
+#### Stage 2: Semantic Embedding + Fusion
+
+5. **Generate Label Descriptions (LLM)**
+
+   ```bash
+   Run: embedding/GPT_prompt.ipynb
+   ```
+
+6. **Embed Descriptions with Roberta/BERT**
+
+   ```bash
+   Run: embedding/label_embeddings_roberta_bert.ipynb
+   ```
+
+7. **Extract CNN Features**
+
+   ```bash
+   Run: extract_3DCNN_features.ipynb
+   ```
+
+8. **Train & Evaluate S3FN**
+
+   ```bash
+   Run: S3FN.ipynb  
+   Run: Test_w_voting.ipynb
+   ```
+
+---
+
+## Dependencies
+
+Install Python dependencies with:
 
 ```bash
 pip install -r requirements.txt
+```
+
+---
+
+## Citation
+
+If you find this work useful, please cite our paper:
+
+```bibtex
+@inproceedings{your_citation_key_2025,
+  title={Label Semantics for Robust Hyperspectral Image Classification},
+  author={Your Name and Coauthors},
+  booktitle={International Joint Conference on Neural Networks (IJCNN)},
+  year={2025}
+}
+```
+
+---
+
+## License
+
+This project is licensed under the terms of the [MIT License](LICENSE).
