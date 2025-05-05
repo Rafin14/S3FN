@@ -6,7 +6,19 @@ This repository contains code and resources from our IJCNN 2025 paper **"Label S
 
 ## Overview
 
-We propose a novel architecture (**S3FN**) that leverages label semantics to guide hyperspectral image classification. The pipeline integrates hyperspectral cube processing, dimensionality reduction, 3D-CNN training, and semantic embedding using large language models.
+Hyperspectral image (HSI) classification often suffers in generalization performance when limited training data are present. Traditional models rely solely on spectral and spatial features, often ignoring the semantic structure of class labels.
+
+In this work, we propose S3FN (Semantics-Supervised Spectral Feature Network), a novel two-stage framework that augments spectral-spatial representations with high-level semantic information. We leverage label descriptions generated using large language models (LLMs) and embed them using pretrained transformers (e.g., RoBERTa). These embeddings are then used guide the learning of robust spectral features.
+
+The key contributions include:
+
+A two-stage pipeline integrating 3D-CNN feature extraction and label semantic alignment.
+
+Use of LLM-generated label descriptions and transformer-based embeddings to infuse semantic meaning into the classification process.
+
+Improved robustness, demonstrated on challenging HSI benchmarks datasets.
+
+This repository provides full implementation for the Hyperspectral Blueberry dataset, including preprocessing, 3D-CNN training, semantic embedding, and the final S3FN classification.
 
 ---
 
@@ -36,7 +48,7 @@ HyperspectralBlueberries/
 
 ## S3FN Architecture
 
-![S3FN Architecture](Figures/S3FN_Architecture.png) <sub>*Figure: Overall pipeline for S3FN. Stage 1: Feature extraction; Stage 2: Semantic fusion and classification.*</sub>
+![S3FN Architecture](Figures/S3FN_Architecture.png) <sub>*Figure: Overall pipeline for S3FN. Refer to the paper for indepth explanation.*</sub>
 
 ---
 
@@ -147,6 +159,68 @@ If you find this work useful, please cite our paper:
 ```
 
 ---
+
+## Dataset References
+
+This repository makes use of the following hyperspectral datasets:
+
+### 🔹 HyperspectralBlueberries
+
+* **Title**: *HyperspectralBlueberries: a dataset of hyperspectral reflectance images of normal and defective blueberries*  
+* **Author**: Yuzhen Lu  
+* **Year**: 2024  
+* **DOI**: [10.5281/zenodo.11200576](https://doi.org/10.5281/zenodo.11200576)
+
+```bibtex
+@misc{blueberry_dataset,
+  doi = {10.5281/zenodo.11200576},
+  author = {{Lu, Yuzhen}},
+  title = {HyperspectralBlueberries: a dataset of hyperspectral reflectance images of normal and defective blueberries},
+  publisher = {Zenodo},
+  year = {2024}
+}
+```
+
+---
+
+### 🔹 Hyperspectral Wood (Sapwood & Heartwood)
+
+* **Title**: *Hyperspectral images for wood recognition (sapwood and heartwood)*  
+* **Author**: Roberto Confalonieri  
+* **Year**: 2022  
+* **DOI**: [10.17632/2SFW446FHT.2](https://doi.org/10.17632/2SFW446FHT.2)
+
+```bibtex
+@misc{wood_dataset,
+  doi = {10.17632/2SFW446FHT.2},
+  author = {{Roberto Confalonieri}},
+  title = {Hyperspectral images for wood recognition (sapwood and heartwood)},
+  publisher = {Mendeley},
+  year = {2022},
+  copyright = {Attribution-NonCommercial 3.0 Unported},
+}
+```
+
+---
+
+### 🔹 Fruit Ripeness Dataset (Avocado & Kiwi)
+
+* **Title**: *Measuring the Ripeness of Fruit with Hyperspectral Imaging and Deep Learning*  
+* **Authors**: Leon Amadeus Varga, Jan Makowski, Andreas Zell  
+* **Conference**: IJCNN 2021  
+* **DOI**: [10.1109/IJCNN52387.2021.9533728](https://doi.org/10.1109/IJCNN52387.2021.9533728)
+
+```bibtex
+@INPROCEEDINGS{ripeness_paper_dataset,
+  author={Varga, Leon Amadeus and Makowski, Jan and Zell, Andreas},
+  booktitle={2021 International Joint Conference on Neural Networks (IJCNN)}, 
+  title={Measuring the Ripeness of Fruit with Hyperspectral Imaging and Deep Learning}, 
+  year={2021},
+  pages={1-8},
+  keywords={Deep learning;Adaptation models;Neural networks;Data visualization;Predictive models;Data collection;Cameras;hyperspectral;deep learning;convolutional neural network;ripening fruit},
+  doi={10.1109/IJCNN52387.2021.9533728}
+}
+```
 
 ## License
 
