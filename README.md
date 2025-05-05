@@ -36,7 +36,7 @@ HyperspectralBlueberries/
 
 ## S3FN Architecture
 
-![S3FN Architecture](docs/assets/s3fn_architecture.png) <sub>*Figure: Overall pipeline for S3FN. Stage 1: Feature extraction; Stage 2: Semantic fusion and classification.*</sub>
+![S3FN Architecture](Figures/S3FN_Architecture.png) <sub>*Figure: Overall pipeline for S3FN. Stage 1: Feature extraction; Stage 2: Semantic fusion and classification.*</sub>
 
 ---
 
