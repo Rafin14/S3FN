@@ -145,80 +145,50 @@ pip install -r requirements.txt
 
 ---
 
-## Citation
-
-If you find this work useful, please cite our paper:
-
-```bibtex
-@inproceedings{your_citation_key_2025,
-  title={Label Semantics for Robust Hyperspectral Image Classification},
-  author={Your Name and Coauthors},
-  booktitle={International Joint Conference on Neural Networks (IJCNN)},
-  year={2025}
-}
-```
-
 ---
 
 ## Dataset References
 
 This repository makes use of the following hyperspectral datasets:
 
-### 🔹 HyperspectralBlueberries
+###  HyperspectralBlueberries
 
 * **Title**: *HyperspectralBlueberries: a dataset of hyperspectral reflectance images of normal and defective blueberries*  
 * **Author**: Yuzhen Lu  
 * **Year**: 2024  
 * **DOI**: [10.5281/zenodo.11200576](https://doi.org/10.5281/zenodo.11200576)
 
-```bibtex
-@misc{blueberry_dataset,
-  doi = {10.5281/zenodo.11200576},
-  author = {{Lu, Yuzhen}},
-  title = {HyperspectralBlueberries: a dataset of hyperspectral reflectance images of normal and defective blueberries},
-  publisher = {Zenodo},
-  year = {2024}
-}
-```
-
 ---
 
-### 🔹 Hyperspectral Wood (Sapwood & Heartwood)
+###  Hyperspectral Wood (Sapwood & Heartwood)
 
 * **Title**: *Hyperspectral images for wood recognition (sapwood and heartwood)*  
 * **Author**: Roberto Confalonieri  
 * **Year**: 2022  
 * **DOI**: [10.17632/2SFW446FHT.2](https://doi.org/10.17632/2SFW446FHT.2)
 
-```bibtex
-@misc{wood_dataset,
-  doi = {10.17632/2SFW446FHT.2},
-  author = {{Roberto Confalonieri}},
-  title = {Hyperspectral images for wood recognition (sapwood and heartwood)},
-  publisher = {Mendeley},
-  year = {2022},
-  copyright = {Attribution-NonCommercial 3.0 Unported},
-}
-```
-
 ---
 
-### 🔹 Fruit Ripeness Dataset (Avocado & Kiwi)
+###  Fruit Ripeness Dataset (Avocado & Kiwi)
 
 * **Title**: *Measuring the Ripeness of Fruit with Hyperspectral Imaging and Deep Learning*  
 * **Authors**: Leon Amadeus Varga, Jan Makowski, Andreas Zell  
 * **Conference**: IJCNN 2021  
 * **DOI**: [10.1109/IJCNN52387.2021.9533728](https://doi.org/10.1109/IJCNN52387.2021.9533728)
 
+---
+
+
+## Citation
+
+If you find this work useful, please cite our paper:
+
 ```bibtex
-@INPROCEEDINGS{ripeness_paper_dataset,
-  author={Varga, Leon Amadeus and Makowski, Jan and Zell, Andreas},
-  booktitle={2021 International Joint Conference on Neural Networks (IJCNN)}, 
-  title={Measuring the Ripeness of Fruit with Hyperspectral Imaging and Deep Learning}, 
-  year={2021},
-  pages={1-8},
-  keywords={Deep learning;Adaptation models;Neural networks;Data visualization;Predictive models;Data collection;Cameras;hyperspectral;deep learning;convolutional neural network;ripening fruit},
-  doi={10.1109/IJCNN52387.2021.9533728}
+@inproceedings{S3FN,
+  title={Label Semantics for Robust Hyperspectral Image Classification},
+  author={Your Name and Coauthors},
+  booktitle={International Joint Conference on Neural Networks (IJCNN)},
+  year={2025}
 }
 ```
 
